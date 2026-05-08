@@ -128,27 +128,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const expandButtons = document.querySelectorAll('.expand-btn');
     
-    // Position timeline dotted line precisely between first and last circles
-    function updateTimeline() {
-        const story = document.querySelector('.career-story');
-        const chapters = document.querySelectorAll('.career-chapter');
-        if (!story || chapters.length < 2) return;
-        
-        const storyRect = story.getBoundingClientRect();
-        const firstChapter = chapters[0];
-        const lastChapter = chapters[chapters.length - 1];
-        const firstRect = firstChapter.getBoundingClientRect();
-        const lastRect = lastChapter.getBoundingClientRect();
-        
-        // First circle: top: 40px from chapter, 14px + 2*2 border = 18px tall, center at 49px
-        const firstCircleCenter = (firstRect.top - storyRect.top) + 49;
-        // Last circle (filled): top: 40px from chapter, 18px + 2*3 border = 24px tall, center at 52px
-        const lastCircleCenter = (lastRect.top - storyRect.top) + 52;
-        
-        story.style.setProperty('--timeline-top', firstCircleCenter + 'px');
-        story.style.setProperty('--timeline-height', (lastCircleCenter - firstCircleCenter) + 'px');
-    }
-    
     expandButtons.forEach(button => {
         button.addEventListener('click', function() {
             const content = this.previousElementSibling;
@@ -166,15 +145,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 teaser.style.display = 'none';
                 this.textContent = 'Read less';
             }
-            
-            // Update timeline after expansion animation completes
-            setTimeout(updateTimeline, 350);
         });
     });
-    
-    // Initial timeline calculation (after layout settles)
-    setTimeout(updateTimeline, 100);
-    window.addEventListener('resize', updateTimeline);
 
     // Carousel functionality
     const track = document.querySelector('.carousel-track');
