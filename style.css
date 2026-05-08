@@ -108,7 +108,7 @@ section:not(#hero) {
     max-width: 100%;
     margin: 0 auto;
     background: var(--color-white);
-    padding: 3rem;
+    padding: 2rem;
     border-radius: 12px;
     box-shadow: 0 2px 20px rgba(78, 197, 193, 0.08);
 }
@@ -899,6 +899,10 @@ footer {
     
     section {
         padding: 1rem 0;
+    }
+    
+    .section-content {
+        padding: 1.5rem;
     }
     
     main {
