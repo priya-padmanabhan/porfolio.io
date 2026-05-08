@@ -415,9 +415,9 @@ h3 {
 .career-story::before {
     content: '';
     position: absolute;
-    left: -1.5rem;
-    top: 47px;
-    bottom: 40px;
+    left: calc(-2.4rem + 8px);
+    top: var(--timeline-top, 49px);
+    height: var(--timeline-height, 0);
     width: 0;
     border-left: 2px dotted #1D9E75;
 }
