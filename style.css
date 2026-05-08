@@ -118,7 +118,7 @@ section:not(#hero) {
     min-height: 100vh;
     display: flex;
     align-items: center;
-    overflow: hidden;
+    overflow: visible;
 }
 
 .hero-content {
