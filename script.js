@@ -166,7 +166,14 @@ document.addEventListener('DOMContentLoaded', function() {
             const percentage = currentIndex * 100;
             console.log('Moving to index:', currentIndex, 'Percentage:', percentage);
             track.style.transform = `translateX(-${percentage}%)`;
+            
+            // Hide prev arrow on first slide, next arrow on last slide
+            prevBtn.style.display = currentIndex === 0 ? 'none' : 'flex';
+            nextBtn.style.display = currentIndex === totalSlides - 1 ? 'none' : 'flex';
         }
+        
+        // Set initial arrow visibility
+        updateCarousel();
         
         nextBtn.addEventListener('click', () => {
             console.log('Next clicked, current index:', currentIndex);
