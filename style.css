@@ -408,16 +408,18 @@ h3 {
     padding-bottom: 2rem;
 }
 
-.career-chapter:first-child::after {
+.career-story {
+    position: relative;
+}
+
+.career-story::before {
     content: '';
     position: absolute;
-    left: -2.4rem;
+    left: -1.5rem;
     top: 47px;
-    height: var(--timeline-height, calc(100% + 13rem + 40px));
+    bottom: 40px;
     width: 0;
     border-left: 2px dotted #1D9E75;
-    margin-left: 7px;
-    transition: height 0.3s ease;
 }
 
 .career-chapter::before {

@@ -128,21 +128,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const expandButtons = document.querySelectorAll('.expand-btn');
     
-    // Function to update timeline height
-    function updateTimelineHeight() {
-        const firstChapter = document.querySelector('.career-chapter:first-child');
-        const lastChapter = document.querySelector('.career-chapter:last-child');
-        
-        if (firstChapter && lastChapter) {
-            const firstRect = firstChapter.getBoundingClientRect();
-            const lastRect = lastChapter.getBoundingClientRect();
-            const height = lastRect.bottom - firstRect.top;
-            
-            // Update CSS custom property for timeline height
-            firstChapter.style.setProperty('--timeline-height', height + 'px');
-        }
-    }
-    
     expandButtons.forEach(button => {
         button.addEventListener('click', function() {
             const content = this.previousElementSibling;
@@ -160,14 +145,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 teaser.style.display = 'none';
                 this.textContent = 'Read less';
             }
-            
-            // Update timeline height after expansion animation
-            setTimeout(updateTimelineHeight, 350);
         });
     });
-    
-    // Initial timeline height calculation
-    setTimeout(updateTimelineHeight, 100);
 
     // Carousel functionality
     const track = document.querySelector('.carousel-track');
