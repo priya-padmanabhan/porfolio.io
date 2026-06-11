@@ -276,7 +276,7 @@ h3 {
 
 /* About Section */
 #about {
-    padding: 6rem 0;
+    padding: 3rem 0;
 }
 
 .about-section {
@@ -313,10 +313,36 @@ h3 {
 
 .about-heading {
     font-family: 'Playfair Display', serif;
-    font-size: 2.25rem;
-    line-height: 1.2;
-    margin-bottom: 1.25rem;
-    color: #2C2C2A;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: #000;
+}
+
+.about-layout {
+    display: flex;
+    gap: 3rem;
+    align-items: flex-start;
+    position: relative;
+}
+
+.about-text {
+    flex: 1;
+}
+
+.about-image {
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin-top: -4rem;
+}
+
+.profile-photo {
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 50%;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
 .about-body {
@@ -591,6 +617,153 @@ h3 {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2.5rem;
+}
+
+.quests-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2rem;
+    grid-auto-rows: 1fr;
+}
+
+.quest-card {
+    padding: 2rem;
+    background: var(--color-white);
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+    min-height: 480px;
+}
+
+.quest-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    border-color: #999;
+}
+
+.quest-tag {
+    display: inline-block;
+    align-self: flex-start;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.7rem;
+    border-radius: 999px;
+    background: #f1f1f1;
+    color: #555;
+}
+
+.quest-card h3 {
+    margin: 0;
+    color: #000;
+    min-height: 2.6em;
+    line-height: 1.3;
+}
+
+.quest-meta {
+    font-size: 0.85rem;
+    color: #777;
+    margin: 0;
+}
+
+.quest-card p:last-child {
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* Flip card (whole quest card flips) */
+.quest-card.flip-card {
+    padding: 0;
+    background: transparent;
+    border: none;
+    perspective: 1200px;
+    cursor: pointer;
+    overflow: visible;
+    outline: none;
+}
+
+.quest-card.flip-card:hover {
+    transform: none;
+    box-shadow: none;
+    border-color: transparent;
+}
+
+.quest-card.flip-card {
+    display: flex;
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 480px;
+    transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner,
+.flip-card:focus-visible .flip-card-inner,
+.flip-card.is-flipped .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+    position: absolute;
+    inset: 0;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    border-radius: 12px;
+    background: var(--color-white);
+    border: 1px solid #ddd;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    overflow: hidden;
+    transition: box-shadow 0.3s, border-color 0.3s;
+    min-height: 480px;
+}
+
+.flip-card-front {
+    position: relative;
+}
+
+.flip-card:hover .flip-card-front,
+.flip-card:hover .flip-card-back,
+.flip-card.is-flipped .flip-card-front,
+.flip-card.is-flipped .flip-card-back {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    border-color: #999;
+}
+
+.flip-card-image {
+    flex: 1;
+    border-radius: 8px;
+    overflow: hidden;
+    min-height: 180px;
+    margin-top: 1rem;
+}
+
+.flip-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.flip-card-back {
+    transform: rotateY(180deg);
+}
+
+.flip-card-back h3 {
+    margin: 0;
+    color: #000;
+    line-height: 1.3;
 }
 
 .interest-card {

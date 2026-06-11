@@ -110,7 +110,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    const navLinks = document.querySelectorAll('nav a');
+    const navLinks = document.querySelectorAll('nav a, .cta-row a');
     
     navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
@@ -122,6 +122,21 @@ document.addEventListener('DOMContentLoaded', function() {
                 targetSection.scrollIntoView({
                     behavior: 'smooth'
                 });
+            }
+        });
+    });
+
+    // Flip card click toggle
+    const flipCards = document.querySelectorAll('.flip-card');
+    flipCards.forEach(card => {
+        card.addEventListener('click', function(e) {
+            if (e.target.closest('a')) return;
+            this.classList.toggle('is-flipped');
+        });
+        card.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                this.classList.toggle('is-flipped');
             }
         });
     });
