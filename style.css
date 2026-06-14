@@ -88,6 +88,7 @@ main {
 section {
     padding: 3rem 0;
     position: relative;
+    scroll-margin-top: 80px;
 }
 
 section:not(#hero) {
