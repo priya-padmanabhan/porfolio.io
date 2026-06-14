@@ -1091,4 +1091,41 @@ footer {
     main {
         padding: 0 1rem;
     }
+    
+    .contact-buttons {
+        flex-direction: column;
+        gap: 0.75rem;
+        align-items: stretch;
+    }
+    
+    .btn-primary,
+    .btn-secondary {
+        padding: 0.875rem 1.5rem;
+        font-size: 0.95rem;
+        width: 100%;
+        text-align: center;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    
+    .contact-content p {
+        font-size: 1rem;
+        padding: 0 0.5rem;
+    }
+    
+    .about-image {
+        width: 150px;
+        height: 150px;
+        margin: 0 0 1rem 1rem;
+    }
+    
+    .profile-photo {
+        width: 150px;
+        height: 150px;
+    }
+    
+    .about-body {
+        font-size: 0.9rem;
+    }
 }
