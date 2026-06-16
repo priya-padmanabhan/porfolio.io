@@ -635,6 +635,7 @@ h3 {
     grid-template-columns: repeat(4, 1fr);
     gap: 2rem;
     grid-auto-rows: 1fr;
+    align-items: stretch;
 }
 
 .quest-card {
@@ -695,6 +696,24 @@ h3 {
     cursor: pointer;
     overflow: visible;
     outline: none;
+    position: relative;
+    height: 480px;
+}
+
+.flip-card-front .flip-hint {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    font-size: 0.7rem;
+    color: #999;
+    opacity: 0.7;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.flip-card.is-flipped .flip-hint {
+    opacity: 0;
+    visibility: hidden;
 }
 
 .quest-card.flip-card:hover {
@@ -711,12 +730,10 @@ h3 {
     position: relative;
     width: 100%;
     height: 100%;
-    min-height: 480px;
     transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
     transform-style: preserve-3d;
 }
 
-.flip-card:hover .flip-card-inner,
 .flip-card:focus-visible .flip-card-inner,
 .flip-card.is-flipped .flip-card-inner {
     transform: rotateY(180deg);
@@ -737,15 +754,53 @@ h3 {
     gap: 0.75rem;
     overflow: hidden;
     transition: box-shadow 0.3s, border-color 0.3s;
-    min-height: 480px;
+    height: 100%;
+}
+
+@media (max-width: 768px) {
+    .quest-card.flip-card {
+        height: 400px;
+    }
+    
+    .flip-card-front,
+    .flip-card-back {
+        padding: 1.25rem;
+        gap: 0.5rem;
+    }
+    
+    .flip-card-front h3,
+    .flip-card-back h3 {
+        font-size: 1rem;
+        min-height: auto;
+        line-height: 1.3;
+    }
+    
+    .quest-tag {
+        font-size: 0.6rem;
+        padding: 0.25rem 0.5rem;
+    }
+    
+    .quest-meta {
+        font-size: 0.75rem;
+    }
+    
+    .flip-card-front p,
+    .flip-card-back p {
+        font-size: 0.85rem;
+        line-height: 1.5;
+    }
+    
+    .flip-card-front .flip-hint {
+        font-size: 0.65rem;
+        bottom: 0.75rem;
+        right: 0.75rem;
+    }
 }
 
 .flip-card-front {
     position: relative;
 }
 
-.flip-card:hover .flip-card-front,
-.flip-card:hover .flip-card-back,
 .flip-card.is-flipped .flip-card-front,
 .flip-card.is-flipped .flip-card-back {
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
@@ -763,7 +818,7 @@ h3 {
 .flip-card-image img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     display: block;
 }
 

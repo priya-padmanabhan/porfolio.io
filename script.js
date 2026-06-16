@@ -129,10 +129,28 @@ document.addEventListener('DOMContentLoaded', function() {
     // Flip card click toggle
     const flipCards = document.querySelectorAll('.flip-card');
     flipCards.forEach(card => {
+        let touchStartTime = 0;
+        
+        card.addEventListener('touchstart', function(e) {
+            touchStartTime = Date.now();
+        });
+        
+        card.addEventListener('touchend', function(e) {
+            const touchDuration = Date.now() - touchStartTime;
+            // Only toggle if it's a tap (not a swipe)
+            if (touchDuration < 200 && !e.target.closest('a')) {
+                e.preventDefault();
+                this.classList.toggle('is-flipped');
+            }
+        });
+        
         card.addEventListener('click', function(e) {
             if (e.target.closest('a')) return;
+            // Prevent double-firing on mobile
+            if (e.detail === 0) return;
             this.classList.toggle('is-flipped');
         });
+        
         card.addEventListener('keydown', function(e) {
             if (e.key === 'Enter' || e.key === ' ') {
                 e.preventDefault();
